@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "HotFixStudy"
 include ':app'
+include ':ApkRebuild'
+include ':DecryptApplication'
