@@ -8,20 +8,20 @@ object ZipUtils {
     fun unzip(zipPath: String, outPath: String) {
         var zipFile = ZipFile(File(zipPath))
         var outFile = File(outPath)
-        if (outFile.exists()) {
-            outFile.deleteRecursively()
-        }
         outFile.mkdirs()
-
         val entries = zipFile.entries()
         while (entries.hasMoreElements()) {
             val entry = entries.nextElement()
+            if (entry.name == "resources.arsc") {
+                println("zipFile:${entry.size},${entry.compressedSize}")
+                entry.method = ZipEntry.STORED
+            }
+
+
             if (entry.isDirectory) {
-                val dirPath = outPath + File.separator + entry.name
-                File(dirPath).mkdirs()
+                File(outPath, entry.name).mkdirs()
             } else {
-                val filePath = outPath + File.separator + entry.name
-                val file = File(filePath)
+                val file = File(outFile, entry.name)
                 if (!file.parentFile.exists()) {
                     file.parentFile.mkdirs()
                 }
@@ -93,11 +93,45 @@ object ZipUtils {
     }
 
     private fun zipFile(zipOutputStream: ZipOutputStream, file:File, basePath: String) {
+        if (file.name == "resources.arsc") {
+            // Android 11 及 以上，该文件不能压缩
+            zipStoreFile(zipOutputStream, file, basePath)
+            return
+        }
         val entryName = basePath + file.name
         zipOutputStream.putNextEntry(ZipEntry(entryName))
         val inputStream = FileInputStream(file)
         var buff = ByteArray(1024)
         var read = inputStream.read(buff)
+        while (read != -1) {
+            zipOutputStream.write(buff, 0 , read)
+            read = inputStream.read(buff)
+        }
+        inputStream.close()
+        zipOutputStream.closeEntry()
+    }
+
+    private fun zipStoreFile(zipOutputStream: ZipOutputStream, file:File, basePath: String){
+        val entryName = basePath + file.name
+        val entry = ZipEntry(entryName)
+
+        val crc = CheckedInputStream(FileInputStream(file), CRC32())
+        val buff = ByteArray(1024)
+        var size  = 0L
+        var read = crc.read(buff)
+        while (read  != -1){
+            size  += read
+            read = crc.read(buff)
+        }
+        crc.close()
+
+        entry.method = ZipEntry.STORED
+        entry.size = size
+        entry.crc = crc.checksum.value
+
+        zipOutputStream.putNextEntry(entry)
+        val inputStream = FileInputStream(file)
+        read = inputStream.read(buff)
         while (read != -1) {
             zipOutputStream.write(buff, 0 , read)
             read = inputStream.read(buff)

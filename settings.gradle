@@ -10,3 +10,4 @@ rootProject.name = "HotFixStudy"
 include ':app'
 include ':ApkRebuild'
 include ':DecryptApplication'
+include ':EncryptLib'

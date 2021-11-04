@@ -2,7 +2,10 @@ package com.yeshuihan.hotfixstudy.apkrebuild
 
 import java.io.File
 import java.io.FileWriter
+import java.io.RandomAccessFile
+import java.lang.Exception
 import java.lang.StringBuilder
+import java.security.MessageDigest
 import java.security.SecureRandom
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
@@ -10,37 +13,97 @@ import javax.crypto.spec.SecretKeySpec
 import kotlin.random.Random
 
 object AESUtils {
+    private const val algorithmStr = "AES/ECB/PKCS5Padding"
+    private const val ALGORITHM = "AES"
+
 
     fun encrypt(content: String, password: String):ByteArray {
         return encrypt(content.toByteArray(), password)
     }
 
     fun encrypt(byteArray: ByteArray, password:  String): ByteArray {
-        var keyGenerator = KeyGenerator.getInstance("AES")
-        val random = SecureRandom.getInstance("SHA1PRNG")
-        random.setSeed(password.toByteArray())
-        keyGenerator.init(128, random)
-        val generateKey = keyGenerator.generateKey()
-        val keyBytes = generateKey.encoded
-        val key = SecretKeySpec(keyBytes, "AES")
-        val cipher = Cipher.getInstance("AES")
-        cipher.init(Cipher.ENCRYPT_MODE, key)
+        val cipher = Cipher.getInstance(algorithmStr)
+        cipher.init(Cipher.ENCRYPT_MODE, getKey(password))
 
         return cipher.doFinal(byteArray)
     }
 
     fun decrypt(byteArray: ByteArray, password: String): ByteArray {
-        var keyGenerator = KeyGenerator.getInstance("AES")
-        val random = SecureRandom.getInstance("SHA1PRNG")
-        random.setSeed(password.toByteArray())
-        keyGenerator.init(128, random)
-        val generateKey = keyGenerator.generateKey()
-        val keyBytes = generateKey.encoded
-        val key = SecretKeySpec(keyBytes, "AES")
-        val cipher = Cipher.getInstance("AES")
-        cipher.init(Cipher.DECRYPT_MODE, key)
+        val cipher = Cipher.getInstance(algorithmStr)
+        cipher.init(Cipher.DECRYPT_MODE, getKey(password))
         return cipher.doFinal(byteArray)
+    }
 
+
+    /**
+     * 加密dex文件
+     * @param file File 要加密的dex文件
+     * @param toPath String 加密后的输出文件夹
+     */
+    fun encryptDexFile(file: File, outFilePath: String) {
+        val outFile = File(outFilePath)
+        outFile.parentFile.mkdirs()
+
+        var readFile: RandomAccessFile? = null
+        var writeFile: RandomAccessFile? = null
+        try {
+            readFile = RandomAccessFile(file, "r")
+            writeFile = RandomAccessFile(outFile, "rw")
+            val buff = ByteArray(readFile.length().toInt()) //这里后期考虑分步骤加密
+            readFile.readFully(buff)
+            writeFile.write(encrypt(buff, "1234567812345678"))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            readFile?.let {
+                it.close()
+            }
+            writeFile?.let {
+                it.close()
+            }
+        }
+
+    }
+
+
+    fun decryptDexFile(file: File, outFilePath: String) {
+        val outFile = File(outFilePath)
+        outFile.parentFile.mkdirs()
+
+        var readFile: RandomAccessFile? = null
+        var writeFile: RandomAccessFile? = null
+        try {
+            readFile = RandomAccessFile(file, "r")
+            writeFile = RandomAccessFile(outFilePath, "rw")
+            val byteArray = ByteArray(readFile.length().toInt())
+            readFile.readFully(byteArray)
+            val afterArray = decrypt(byteArray, "1234567812345678")
+            writeFile.write(afterArray, 0, afterArray.size)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            readFile?.let {
+                it.close()
+            }
+            writeFile?.let {
+                it.close()
+            }
+        }
+    }
+
+    private fun getKey(password: String): SecretKeySpec {
+        return SecretKeySpec(getSHA256(password), ALGORITHM)
+    }
+
+    /**
+     * 获取256位哈希值
+     * @param str String
+     * @return ByteArray
+     */
+    private fun getSHA256(str: String): ByteArray {
+        val digest = MessageDigest.getInstance("SHA-256")
+        digest.update(str.toByteArray(Charsets.UTF_8))
+        return digest.digest()
     }
 }
 
