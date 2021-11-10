@@ -1,7 +1,21 @@
+
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.yeshuihan.reinforceplugin'
 }
-apply plugin: 'kotlin-android'
+apply plugin:"com.yeshuihan.myplugin2"
+apply plugin: "com.yeshuihan.javaplugin"
+//apply plugin: "com.yeshuihan.kotlinplugin"
+
+C.test()
+//A.test()
+
+reinforce {
+    d8Path("")
+    signerPath("")
+    zipalignPath("")
+}
 
 android {
     compileSdk rootProject.compileSdk
