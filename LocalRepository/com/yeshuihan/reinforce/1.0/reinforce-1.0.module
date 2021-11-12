@@ -38,11 +38,11 @@
         {
           "name": "reinforce-1.0.jar",
           "url": "reinforce-1.0.jar",
-          "size": 5649,
-          "sha512": "1a90fcf9718ef8e045a1ec3deb4ac57243a7294813c1ca88fb7254c113e08bca629d0fdad57d4d56f25a562571c233a1be8cb49ec9db08fb42cfde0d537209f9",
-          "sha256": "525eb2067692fb00206996f1afe891b43c51bae12304b310d32b075f5489e596",
-          "sha1": "84ff05abb9a360099bcc99a946f0696adced09d2",
-          "md5": "b8264f8a310b9104b94ca55ad5ef5fb3"
+          "size": 22973,
+          "sha512": "529c407154d37d7ef8f841fc62e2c720f807cf4ea32fadc5a6f6e983cb90edbcb508c696a7e5199a9dcf3a12f3cb8e45dcb8600c8a9a2a068578d40467819d8b",
+          "sha256": "de50f44b9cfad8634cffd379897c6e3a6146e1a81c1b99a178a27f34c7f8bca1",
+          "sha1": "3a3ab8c9fa6259a3708f326455e516303874e3e3",
+          "md5": "a71e50d81333bbf37ddb66e195e37f5d"
         }
       ]
     },
@@ -59,17 +59,10 @@
       },
       "dependencies": [
         {
-          "group": "org.jetbrains.kotlin",
-          "module": "kotlin-gradle-plugin",
+          "group": "HotFixStudy",
+          "module": "Common",
           "version": {
-            "requires": "1.5.31"
-          }
-        },
-        {
-          "group": "com.android.tools.build",
-          "module": "gradle",
-          "version": {
-            "requires": "4.1.3"
+            "requires": "unspecified"
           }
         },
         {
@@ -84,11 +77,11 @@
         {
           "name": "reinforce-1.0.jar",
           "url": "reinforce-1.0.jar",
-          "size": 5649,
-          "sha512": "1a90fcf9718ef8e045a1ec3deb4ac57243a7294813c1ca88fb7254c113e08bca629d0fdad57d4d56f25a562571c233a1be8cb49ec9db08fb42cfde0d537209f9",
-          "sha256": "525eb2067692fb00206996f1afe891b43c51bae12304b310d32b075f5489e596",
-          "sha1": "84ff05abb9a360099bcc99a946f0696adced09d2",
-          "md5": "b8264f8a310b9104b94ca55ad5ef5fb3"
+          "size": 22973,
+          "sha512": "529c407154d37d7ef8f841fc62e2c720f807cf4ea32fadc5a6f6e983cb90edbcb508c696a7e5199a9dcf3a12f3cb8e45dcb8600c8a9a2a068578d40467819d8b",
+          "sha256": "de50f44b9cfad8634cffd379897c6e3a6146e1a81c1b99a178a27f34c7f8bca1",
+          "sha1": "3a3ab8c9fa6259a3708f326455e516303874e3e3",
+          "md5": "a71e50d81333bbf37ddb66e195e37f5d"
         }
       ]
     }

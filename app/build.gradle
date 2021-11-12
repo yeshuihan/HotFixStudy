@@ -2,7 +2,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.yeshuihan.reinforceplugin'
 }
 apply plugin:"com.yeshuihan.myplugin2"
 apply plugin: "com.yeshuihan.javaplugin"
@@ -11,10 +10,13 @@ apply plugin: "com.yeshuihan.javaplugin"
 C.test()
 //A.test()
 
+apply plugin: 'com.yeshuihan.reinforceplugin'
 reinforce {
-    d8Path("")
-    signerPath("")
-    zipalignPath("")
+    d8Path "/Users/konka/Library/Android/sdk/build-tools/30.0.3/d8"
+    apksignerPath "/Users/konka/Library/Android/sdk/build-tools/30.0.3/apksigner"
+    zipalignPath "/Users/konka/Library/Android/sdk/build-tools/30.0.3/zipalign"
+    jarModuleName "EncryptLib"
+    shellModuleName "DecryptApplication"
 }
 
 android {

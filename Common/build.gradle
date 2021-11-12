@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+publishing {
+    publications {
+        Common(MavenPublication) {
+            from components.java
+            groupId "com.yeshuihan.hotfixstudy"
+            artifactId "common"
+            version "1.0"
+        }
+
+    }
+
+    repositories {
+        maven {// 上传到自定义仓库
+            url "file://${project.rootDir.absolutePath}/LocalRepository" // 自定义仓库地址
+        }
+    }
+}

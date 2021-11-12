@@ -1,7 +1,8 @@
 
 rootProject.name = "HotFixStudy"
 include ':app'
-include ':ApkRebuild'
+include ':Reinforce'
 include ':DecryptApplication'
 include ':EncryptLib'
 include ':ReinforcePlugin'
+include ':Common'

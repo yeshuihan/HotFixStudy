@@ -1,0 +1,96 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.yeshuihan.hotfixstudy",
+    "module": "reinforce",
+    "version": "1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 7,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.yeshuihan.hotfixstudy",
+          "module": "common",
+          "version": {
+            "requires": "1.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.31"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "reinforce-1.0.jar",
+          "url": "reinforce-1.0.jar",
+          "size": 22989,
+          "sha512": "8fe53f5de86fa7780e1457713f166f7bf9e4157f1f0dfdb0f09cc19938c5a87a4df412bc5cd27fe10d015cf9599a1536f8ef787d561efa61bea87447d5221717",
+          "sha256": "50cb50c170a1ec18dc3174c39cd664ee597e49aedcb49c3c45200ef86d4d5391",
+          "sha1": "74133336f68c135c16a8b16d7404f977bf4402b8",
+          "md5": "84c28c3d193cb64d396f8ed297d1ef13"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 7,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.yeshuihan.hotfixstudy",
+          "module": "common",
+          "version": {
+            "requires": "1.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.31"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "reinforce-1.0.jar",
+          "url": "reinforce-1.0.jar",
+          "size": 22989,
+          "sha512": "8fe53f5de86fa7780e1457713f166f7bf9e4157f1f0dfdb0f09cc19938c5a87a4df412bc5cd27fe10d015cf9599a1536f8ef787d561efa61bea87447d5221717",
+          "sha256": "50cb50c170a1ec18dc3174c39cd664ee597e49aedcb49c3c45200ef86d4d5391",
+          "sha1": "74133336f68c135c16a8b16d7404f977bf4402b8",
+          "md5": "84c28c3d193cb64d396f8ed297d1ef13"
+        }
+      ]
+    }
+  ]
+}
