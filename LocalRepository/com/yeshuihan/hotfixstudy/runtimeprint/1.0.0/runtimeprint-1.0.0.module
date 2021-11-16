@@ -1,0 +1,60 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.yeshuihan.hotfixstudy",
+    "module": "runtimeprint",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.0.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 7,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "runtimeprint-1.0.0.jar",
+          "url": "runtimeprint-1.0.0.jar",
+          "size": 1700,
+          "sha512": "93b7ade6d3d4c2fbcc69ba3d3473fe047555d97f3aacf373042f96cc1d14af43caea286606e1730e7b01e8d2dba33957db5c563f854542e308162fc18952e6ee",
+          "sha256": "20f16b6c9fd5f0c15c8fac5f1d3eb6dccbc977c2d176849dcad9bc03fc8d2166",
+          "sha1": "d99d39d978a8ba44aa4811d1da13a2d59913d62f",
+          "md5": "5f57375d5f09152f9e368f0b24f89a36"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 7,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "runtimeprint-1.0.0.jar",
+          "url": "runtimeprint-1.0.0.jar",
+          "size": 1700,
+          "sha512": "93b7ade6d3d4c2fbcc69ba3d3473fe047555d97f3aacf373042f96cc1d14af43caea286606e1730e7b01e8d2dba33957db5c563f854542e308162fc18952e6ee",
+          "sha256": "20f16b6c9fd5f0c15c8fac5f1d3eb6dccbc977c2d176849dcad9bc03fc8d2166",
+          "sha1": "d99d39d978a8ba44aa4811d1da13a2d59913d62f",
+          "md5": "5f57375d5f09152f9e368f0b24f89a36"
+        }
+      ]
+    }
+  ]
+}

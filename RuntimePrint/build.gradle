@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+publishing {
+    publications {
+        Runtime(MavenPublication) {
+            from components.java
+            groupId "com.yeshuihan.hotfixstudy"
+            artifactId "runtimeprint"
+            version "1.0.0"
+        }
+    }
+    repositories {
+        maven {
+            url = "file://${project.rootDir.absolutePath}${File.separator}LocalRepository"
+        }
+    }
+}

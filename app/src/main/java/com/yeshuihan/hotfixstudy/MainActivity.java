@@ -4,15 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.yeshuihan.encryptlib.TestEncrypt;
+import com.yeshuihan.hotfixstudy.runtimeprint.AndroidMethodRuntimePrint;
 
 public class MainActivity extends AppCompatActivity {
 
+    @AndroidMethodRuntimePrint("fzw11")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        TestEncrypt.sayHello();
+        Test.test();
+//        TestEncrypt.sayHello();
     }
 }
